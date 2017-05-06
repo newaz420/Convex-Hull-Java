@@ -29,23 +29,6 @@ public class Main {
         if(a > b) return a - b;
         else return b - a;
     }
-/**
- *
- * int check(Point A,Point B,Point C)
- {
- DD res= A.x * B.y - A.y * B.x + B.x * C.y - B.y * C.x + C.x * A.y - C.y * A.x;
- if(res<0)return -1;
- if(res>0)return 1;
- return 0;
- }
- bool compare(Point A,Point B)
- {
- if(check(Ymin, A, B)==0) return dist(Ymin,A)<dist(Ymin,B);
- DD dx1=A.x-Ymin.x, dy1=A.y-Ymin.y;
- DD dx2=B.x-Ymin.x, dy2=B.y-Ymin.y;
- return dy1*dx2<dy2*dx1;
- }
- * */
 
     public  static int check(Point A, Point B, Point C){
         double res = A.getX() * B.getY() - A.getY()*B.getX() + B.getX() * C.getY() - B.getY() * C.getX() + C.getX() * A.getY() - C.getY() * A.getX();
@@ -95,17 +78,7 @@ public class Main {
 
         return pointStack;
     }
-/**
- * Line_Info make_straight_line(Point P,Point Q)
- {
- Line_Info tmp;
- tmp.C=-(P.y-Q.y)*P.x+(P.x-Q.x)*P.y;
- tmp.A=(P.y-Q.y);
- tmp.B=(Q.x-P.x);
- tmp.SQ=sqrt(tmp.A*tmp.A+tmp.B*tmp.B);
- return tmp;
- }
- * **/
+
     public static Line createStraightLine(Point p,Point q){
         double a = p.getY() - q.getY();
         double b = q.getX() - p.getX();
@@ -212,31 +185,6 @@ public class Main {
              }
         }
     }
-    /**
-     * Point get_peak_point(vector<Point>top_points,Point A,Point B)
-     {
-     Line_Info get_line_info=make_straight_line(A,B);
-     DD mx=-(1<<31-1);
-     Point top_p;
-     FOR(i,0,top_points.size())
-     {
-     DD DIST=dist_from_line_to_point(top_points[i],get_line_info);
-
-     if( DIST> mx+EPS)
-     {
-     top_p=top_points[i];
-     mx=DIST;
-     }
-
-     }
-     return top_p;
-     }
-     *
-     * DD dist_from_line_to_point(Point point,Line_Info line)
-     {
-     return ((line.A*point.x+line.B*point.y+line.C)/line.SQ);
-     }
-     * */
 
     public static double distanceFromLineToPoint(Point point, Line line){
         return (line.getA() * point.getX() + line.getB() * point.getY() + line.getC()) / line.getSqRootOfASquarePlusBSquare();
